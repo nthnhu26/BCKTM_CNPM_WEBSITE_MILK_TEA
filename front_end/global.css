@@ -11,6 +11,7 @@ body {
     --font-baloo-thambi-2: "Baloo Thambi 2";
     --font-inter: Inter;
     --font-rubik-bubbles: "Rubik Bubbles";
+    --font-bai-jamjuree: "Bai Jamjuree";
   
     /* font sizes */
     --font-size-6xl: 25px;
@@ -24,6 +25,9 @@ body {
     --color-red: #fe0808;
     --color-tomato: #fa5430;
     --color-gray: #fffefe;
+    --color-peachpuff: #f3c8a0;
+    --color-indigo: #6316a0;
+    --color-orange: #f6a200;
   
     /* Border radiuses */
     --br-31xl: 50px;
