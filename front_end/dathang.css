@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  .product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia đôi khoảng không gian cho ảnh và thông tin sản phẩm */
+    gap: 20px; /* Khoảng cách giữa ảnh và thông tin sản phẩm */
+    justify-content: center;
+    align-items: start;
+    padding: 40px 20px;
+    background-color: white;
+    margin: 50px auto;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    position: relative;
+    width: 300px; /* Đặt kích thước tối đa cho khung ảnh */
+    height: 400px; /* Đặt kích thước tối đa cho khung ảnh */
+    margin: 0 auto; /* Căn giữa khung ảnh */
+    background-color: #B63D3D;
+  }
+  .main-image {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  .overlay-image {
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .product-details {  
+    max-width: 400px;
+  }
+  
+  .product-details h1 {
+    font-size: 40px; /* Tăng cỡ chữ cho tiêu đề */
+    color: #333;
+    margin-bottom: 20px; /* Tăng khoảng cách giữa tiêu đề và giá */
+  }
+  
+  .price {
+    font-size: 35px;
+    color: #8e44ad;
+    margin: 10px 0;
+    margin-bottom: 20px;
+  }
+  
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .quantity-btn {
+    font-size: 25px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+    margin-bottom: 20px;
+  }
+  
+  .quantity-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  #quantity {
+    font-size: 25px;
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ad9f9f;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .order-btn {
+    font-size: 30px;
+    background-color: #e74c3c;
+    color: rgb(254, 254, 254);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    width: 190px;
+  }
+  
+  .order-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .product-description {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-description h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .product-description p {
+    color: #666;
+  }
+  

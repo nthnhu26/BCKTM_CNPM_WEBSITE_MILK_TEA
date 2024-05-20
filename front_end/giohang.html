@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ Hàng Của Tôi</title>
+    <link rel="stylesheet" href="giohang.css" />
+  </head>
+  <body>
+    <div class="cart-container">
+      <h1>Giỏ hàng của tôi</h1>
+      <div class="container-cart">
+        <div class="cart-image">
+          <img src="img/Trà việt quất.png" alt="Trà Việt Quất" class="main-image" />
+          <img src="img/anh2.png" alt="" class="overlay-image" />
+        </div>
+        <div class="cart-details">
+          <h2>Trà Việt Quất</h2>
+          <p>Trà ô long, Trà việt quất.</p>
+          <p class="price">
+            ₫<span class="price-amount">20.000</span> x<span class="quantity"
+              >1</span
+            >
+          </p>
+        </div>
+      </div>
+      <form class="checkout-form">
+        <label for="address"
+          >Địa chỉ
+          <span class="default" style="color: red; font-size: 15px"
+            >mặc định</span
+          ></label
+        >
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value="Số nhà abc, phường 8, thành phố Trà Vinh, Tỉnh Trà Vinh"
+          readonly
+          required
+        />
+
+        <label for="phone">Số điện thoại</label>
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          placeholder="Nhập số điện thoại...."
+          required
+        />
+
+        <label>Phương thức thanh toán</label>
+        <div class="payment-methods">
+          <label>
+            <input type="radio" name="payment" value="shipcod" checked /> Thanh
+            toán khi nhận hàng (ShipCOD)
+          </label>
+          <label class="momo-label">
+            <input type="radio" name="payment" value="momo" /> Thanh toán qua
+            MoMo
+            <img src="img/momo.png" alt="MoMo Icon" class="payment-icon" />
+          </label>
+        </div>
+
+        <div class="total">
+          <p>Tổng tiền <span class="total-amount">₫20.000</span></p>
+        </div>
+
+        <div class="buttons">
+          <button type="button" onclick="viewDetails()">Xem chi tiết</button>
+          <button type="submit">Thanh toán</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function viewDetails() {
+        alert("Hiển thị chi tiết sản phẩm");
+      }
+
+      // Lấy đối tượng input
+      var inputPhone = document.getElementById("phone");
+
+      // Thêm sự kiện 'input' để kiểm tra mỗi lần người dùng nhập vào
+      inputPhone.addEventListener("input", function (event) {
+        // Lấy giá trị mới của trường input
+        var inputValue = event.target.value;
+
+        // Kiểm tra nếu giá trị nhập vào không phải là số
+        if (!/^\d*$/.test(inputValue)) {
+          // Nếu không phải số, loại bỏ ký tự cuối cùng được nhập vào
+          event.target.value = inputValue.slice(0, -1);
+        }
+      });
+    </script>
+  </body>
+</html>
