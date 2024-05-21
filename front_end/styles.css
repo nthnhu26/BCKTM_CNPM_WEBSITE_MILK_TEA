@@ -2108,4 +2108,422 @@
     height: 300px;
     object-fit: cover;
   }
+  .ng-k-child,
+  .ng-k-item {
+    position: absolute;
+    background-color: var(--color-white);
+    box-sizing: border-box;
+  }
+  .ng-k-child {
+    top: 30px;
+    left: 611px;
+    border-radius: 20px;
+    border-top: 3px solid var(--color-black);
+    width: 761px;
+    height: 1160px;
+  }
+  .ng-k-item {
+    top: 619px;
+    left: 669px;
+    border: 3px solid var(--color-black);
+    width: 39px;
+    height: 40px;
+  }
+  .lu-mt-khu,
+  .mt-khu {
+    position: absolute;
+    top: 430px;
+    left: 671px;
+    display: inline-block;
+    width: 331px;
+    height: 50px;
+    font-size: 40px;
+  }
+  .lu-mt-khu {
+    top: 605px;
+    left: 730px;
+  }
+  .ng-k-inner {
+    position: absolute;
+    top: 491px;
+    left: 657px;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 668px;
+    height: 86px;
+  }
+  .email,
+  .ng-k1 {
+    position: absolute;
+    display: inline-block;
+  }
+  .ng-k1 {
+    top: 99px;
+    left: 818px;
+    font-size: 64px;
+    color: var(--color-tomato);
+    text-align: center;
+    width: 361px;
+    height: 63px;
+  }
+  .email {
+    top: 250px;
+    left: 669px;
+    width: 376px;
+    height: 50px;
+    font-size: 40px;
+  }
+  .ng-k-child1,
+  .ng-k-child2 {
+    position: absolute;
+    top: 305px;
+    left: 657px;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 669px;
+    height: 86px;
+  }
+  .ng-k-child2 {
+    top: 714px;
+    left: 671px;
+    background-color: var(--color-tomato);
+    border: 3px solid var(--color-gray);
+    width: 649px;
+  }
+  .hoc,
+  .ng-k2,
+  .ng-nhp-hoc {
+    position: absolute;
+    display: inline-block;
+  }
+  .ng-k2 {
+    top: 724px;
+    left: 798px;
+    font-size: 45px;
+    color: var(--color-white);
+    text-align: center;
+    width: 370px;
+    height: 55px;
+  }
+  .hoc,
+  .ng-nhp-hoc {
+    font-size: var(--font-size-13xl);
+  }
+  .hoc {
+    top: 847px;
+    left: 943px;
+    color: #afa4a4;
+    width: 106px;
+    height: 32px;
+    font-size: 30px;
+  }
+  .ng-nhp-hoc {
+    top: 721px;
+    left: 160px;
+    font-family: var(--font-paytone-one);
+    color: var(--color-white);
+    white-space: pre-wrap;
+    width: 538px;
+    height: 63px;
+  }
+  .ng-k-child3,
+  .ng-k-child4 {
+    position: absolute;
+    top: 934px;
+    left: 680px;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 290px;
+    height: 86px;
+  }
+  .ng-k-child4 {
+    left: 1021px;
+    width: 294px;
+  }
+  .facebook-2-icon,
+  .google-2-icon {
+    position: absolute;
+    top: 947px;
+    left: 716px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .facebook-2-icon {
+    top: 942px;
+    left: 1040px;
+    width: 64px;
+    height: 63px;
+  }
+  .facebook,
+  .google {
+    position: absolute;
+    top: 942px;
+    left: 730px;
+    font-size: 40px;
+    font-family: var(--font-baloo-bhai-2);
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    height: 56px;
+  }
+  .facebook {
+    top: 941px;
+    left: 960px;
+    width: 480px;
+    height: 72px;
+  }
+  .ng-k-child5 {
+    position: absolute;
+    top: 425px;
+    left: 180px;
+    width: 200px;
+    height: 275px;
+    object-fit: cover;
+  }
+  .sweet-milk-tea6 {
+    position: absolute;
+    top: 676px;
+    left: 130px;
+    font-size: var(--font-size-17xl);
+    font-family: var(--font-rubik-bubbles);
+    color: var(--color-white);
+    white-space: pre-wrap;
+    display: inline-block;
+    width: 330px;
+    height: 50px;
+  }
+  .ng-k {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-tomato);
+    height: 1250px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-29xl);
+    color: var(--color-black);
+    font-family: var(--font-baloo);
+  }
+  
+  .ng-nhp-child {
+    position: absolute;
+    top: 40px;
+    left: 613px;
+    border-radius: var(--br-xl);
+    background-color: var(--color-white);
+    border-top: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 761px;
+    height: 1170px;
+  }
+  .qun-mt-khu {
+    position: absolute;
+    top: 807px;
+    left: 670px;
+    display: inline-block;
+    width: 331px;
+    height: 50px;
+    font-size: 30px;
+  }
+  .ng-nhp-item {
+    position: absolute;
+    top: 608px;
+    left: 668px;
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 39px;
+    height: 40px;
+  }
+  .lu-mt-khu1,
+  .mt-khu1,
+  .ng-k3 {
+    position: absolute;
+    display: inline-block;
+    width: 331px;
+    height: 50px;
+  }
+  .mt-khu1 {
+    top: 410px;
+    left: 670px;
+    font-size: 40px;
+  }
+  .lu-mt-khu1,
+  .ng-k3 {
+    top: 810px;
+    left: 1162px;
+    font-size: 30px;
+  }
+  .lu-mt-khu1 {
+    top: 599px;
+    left: 729px;
+    font-size: 40px;
+  }
+  .ng-nhp-child1,
+  .ng-nhp-child2,
+  .ng-nhp-inner {
+    position: absolute;
+    top: 480px;
+    left: 656px;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 668px;
+    height: 86px;
+  }
+  .ng-nhp-child1,
+  .ng-nhp-child2 {
+    top: 920px;
+  }
+  .ng-nhp-child2 {
+    top: 1064px;
+  }
+  .ng-nhp3,
+  .tn-ng-nhp {
+    position: absolute;
+    display: inline-block;
+  }
+  .ng-nhp3 {
+    top: 88px;
+    left: 817px;
+    font-size: 45px;
+    color: var(--color-tomato);
+    text-align: center;
+    width: 361px;
+    height: 63px;
+  }
+  .tn-ng-nhp {
+    top: 220px;
+    left: 660px;
+    font-size: 40px;
+    width: 376px;
+    height: 50px;
+  }
+  .ng-nhp-child3,
+  .ng-nhp-child4 {
+    position: absolute;
+    top: 284px;
+    left: 656px;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-white);
+    border: 3px solid var(--color-black);
+    box-sizing: border-box;
+    width: 669px;
+    height: 86px;
+  }
+  .ng-nhp-child4 {
+    top: 694px;
+    left: 669px;
+    background-color: var(--color-tomato);
+    border: 3px solid var(--color-gray);
+    width: 649px;
+  }
+  .hoc1,
+  .ng-nhp4 {
+    position: absolute;
+    display: inline-block;
+  }
+  .ng-nhp4 {
+    top: 710px;
+    left: 800px;
+    font-size: 40px;
+    color: var(--color-white);
+    text-align: center;
+    width: 370px;
+    height: 55px;
+  }
+  .hoc1 {
+    top: 843px;
+    left: 963px;
+    color: var(--color-darkgray-100);
+    width: 97px;
+    height: 32px;
+    font-size: 20px;
+  }
+  .facebook-1-icon,
+  .google-1-icon {
+    position: absolute;
+    top: 931px;
+    left: 708px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .facebook-1-icon {
+    top: 1075px;
+    left: 706px;
+    width: 64px;
+    height: 63px;
+  }
+  .ng-nhp-vi {
+    top: 925px;
+    left: 750px;
+    font-size: 40px;
+    font-family: var(--font-baloo-bhai-2);
+    text-align: center;
+    width: 480px;
+    height: 56px;
+  }
+  .ng-nhp-hoc1,
+  .ng-nhp-vi,
+  .ng-nhp-vi1 {
+    position: absolute;
+    display: inline-block;
+  }
+  .ng-nhp-vi1 {
+    top: 1075px;
+    left: 780px;
+    font-size: 40px;
+    font-family: var(--font-baloo-bhai-2);
+    text-align: center;
+    width: 480px;
+    height: 72px;
+  }
+  .ng-nhp-hoc1 {
+    top: 697px;
+    left: 170px;
+    font-family: 20px;
+    color: var(--color-white);
+    white-space: pre-wrap;
+    width: 538px;
+    height: 63px;
+  }
+  .ng-nhp-child5 {
+    position: absolute;
+    top: 401px;
+    left: 178px;
+    width: 200px;
+    height: 275px;
+    object-fit: cover;
+  }
+  .sweet-milk-tea7 {
+    position: absolute;
+    top: 652px;
+    left: 128px;
+    font-size: var(--font-size-17xl);
+    font-family: var(--font-rubik-bubbles);
+    color: var(--color-white);
+    white-space: pre-wrap;
+    display: inline-block;
+    width: 330px;
+    height: 50px;
+  }
+  .ng-nhp2 {
+    width: 100%;
+    position: relative;
+    background-color: var(--color-tomato);
+    height: 1250px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-13xl);
+    color: var(--color-black);
+    font-family: var(--font-baloo);
+  }
   
