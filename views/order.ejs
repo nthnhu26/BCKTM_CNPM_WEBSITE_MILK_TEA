@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <div class="product-container">
+    <div class="product-image">
+      <img src="<%= product.HINHANH %>" alt="<%= product.TEN_SP %>" class="main-image" />
+      <img src="img/anh2.png" alt="" class="overlay-image" />
+    </div>
+    <div class="product-details">
+      <h1><%= product.TEN_SP %></h1>
+      <p class="price"><%= product.GIA %> đ</p>
+      <div class="quantity-selector">
+        <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+        <input type="text" id="quantity" value="1" readonly>
+        <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+      </div>
+      <button class="order-btn-order" onclick="placeOrder()">Đặt Hàng</button>
+    </div>
+  </div>
+  <div class="product-description">
+    <h3>Mô tả</h3>
+    <p><%= product.MO_TA %></p>
+    <h3 class="review-title">Đánh giá</h3>
+    <div class="reviews">
+      <% reviews.forEach(review => { %>
+        <div class="review">
+          <p><strong><%= review.HO_TEN %></strong> - <%= new Date(review.NGAY_GUI).toLocaleDateString() %></p>
+          <p><%= review.NOI_DUNG %></p>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+  <script>
+    function changeQuantity(amount) {
+      var quantityInput = document.getElementById('quantity');
+      var currentQuantity = parseInt(quantityInput.value);
+      var newQuantity = currentQuantity + amount;
+      if (newQuantity < 1) {
+        newQuantity = 1;
+      }
+      quantityInput.value = newQuantity;
+    }
+
+    function placeOrder() {
+      fetch('/api/users/check-auth')
+        .then(response => response.json())
+        .then(data => {
+          if (data.isLoggedIn) {
+            var quantity = document.getElementById('quantity').value;
+            var productId = '<%= product.ID_SP %>';
+            var price = '<%= product.GIA %>';
+            var userEmail = data.email;
+
+            fetch('/api/orders/place-order', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                user_email: userEmail,
+                product_id: productId,
+                quantity: quantity,
+                price: price
+              })
+            })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text();
+            })        
+            .then(data => {
+              window.location.href = '/cart';
+            })
+            .catch(error => {
+              console.error('There was a problem with the fetch operation:', error);
+              alert('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại.');
+            });
+          } else {
+            alert('Bạn cần đăng nhập để đặt hàng');
+            window.location.href = '/login';
+          }
+        });
+    }
+  </script>
+  <%- include('partials/footer') %>
+</body>
+
+</html>

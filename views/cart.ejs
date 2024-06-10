@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+  <div class="cart-page">
+    <div class="cart-container">
+      <h1>Giỏ hàng của tôi</h1>
+      <div id="cart-content">
+        <% if (orderDetails.length === 0) { %>
+          <p>Giỏ hàng của bạn hiện đang trống.</p>
+        <% } else { %>
+          <% orderDetails.forEach(item => { %>
+            <div class="container-cart">
+              <div class="cart-image">
+                <img src="<%= item.image %>" alt="<%= item.name %>" class="main-image" />
+                <img src="img/anh2.png" alt="" class="overlay-image" />
+              </div>
+              <div class="cart-details">
+                <h2><%= item.name %></h2>
+                <p class="price">
+                  ₫<span class="price-amount"><%= item.price %></span> x<span class="quantity"><%= item.quantity %></span>
+                </p>
+                <button class="remove-item-btn" data-order-id="<%= item.orderId %>" data-product-id="<%= item.productId %>">Xóa khỏi giỏ hàng</button>
+              </div>
+            </div>
+          <% }); %>
+          <div class="total">
+            <p>Tổng tiền: <span class="total-amount">₫<%= totalAmount %></span></p>
+          </div>
+        <% } %>
+      </div>
+      <form id="checkout-form" class="checkout-form" action="/api/payments/checkout" method="POST">
+        <label for="address">Địa chỉ <span class="default" style="color: red; font-size: 15px">mặc định</span></label>
+        <input type="text" id="address" name="address" value="<%= userAddress %>" required />
+      
+        <label for="phone">Số điện thoại</label>
+        <input type="text" id="phone" name="phone" value="<%= userPhone %>" placeholder="Nhập số điện thoại...." required />
+      
+        <label>Phương thức thanh toán</label>
+        <div class="payment-methods">
+          <label>
+            <input type="radio" name="payment" value="shipcod" checked /> Thanh toán khi nhận hàng (ShipCOD)
+          </label>
+          <label class="momo-label">
+            <input type="radio" name="payment" value="momo" /> Thanh toán qua MoMo
+            <img src="img/momo.png" alt="MoMo Icon" class="payment-icon" />
+          </label>
+        </div>
+      
+        <input type="hidden" name="totalAmount" value="<%= totalAmount %>" />
+      
+        <div class="buttons">
+          <button type="button" onclick="orderProduct()">Tiếp tục mua hàng</button>
+          <button type="submit">Thanh toán</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    function orderProduct() {
+      window.location.href = '/menu';
+    }  
+    
+    var inputPhone = document.getElementById("phone"); 
+    inputPhone.addEventListener("input", function (event) {
+      var inputValue = event.target.value;
+      if (!/^\d*$/.test(inputValue)) {
+        event.target.value = inputValue.slice(0, -1);
+      }
+    });
+
+    document.getElementById('checkout-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(result.message);
+          window.location.href = result.redirectUrl; // Chuyển hướng về trang chủ
+        } else {
+          alert(result.error);
+        }
+      } catch (error) {
+        console.error('Error processing payment:', error);
+        alert('Lỗi khi xử lý thanh toán');
+      }
+    });
+
+    const removeItemBtns = document.querySelectorAll('.remove-item-btn');
+
+    removeItemBtns.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const orderId = btn.dataset.orderId;
+        const productId = btn.dataset.productId;
+
+        try {
+          const response = await fetch('/cart/remove-item', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ orderId, productId })
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            // Remove the product from the interface
+            btn.parentElement.parentElement.remove();
+            alert(result.message);
+
+            // Check if the cart is empty
+            if (result.cartEmpty) {
+              document.getElementById('cart-content').innerHTML = '<p>Giỏ hàng của bạn hiện đang trống.</p>';
+              document.querySelector('.total').style.display = 'none'; // Hide the total amount if cart is empty
+            } else {
+              // Update the total amount
+              document.querySelector('.total-amount').textContent = '₫' + result.totalAmount;
+            }
+          } else {
+            alert('Lỗi khi xóa sản phẩm khỏi giỏ hàng');
+          }
+        } catch (error) {
+          console.error('Error removing item from cart:', error);
+        
+        }
+      });
+    });
+  </script>
+  <%- include('partials/footer') %>
+</body>
+</html>

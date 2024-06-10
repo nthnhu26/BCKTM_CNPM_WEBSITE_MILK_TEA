@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+  <div class="banner-menu"></div>
+  <% if (categories && categories.length) { %>
+    <% categories.forEach(category => { %>
+      <h2 class="namecategory"><%= category.TEN_DM %></h2>
+      <div class="category">
+        <% if (category.products && category.products.length) { %>
+          <% category.products.forEach(product => { %>
+            <div class="product">
+              <img src="<%= product.HINHANH %>" alt="<%= product.TEN_SP %>">
+              <p><%= product.TEN_SP %></p>
+              <p><%= product.GIA %> đ</p>
+              <button class="order-btn" data-product-id="<%= product.ID_SP %>">Đặt hàng</button>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p>Không có sản phẩm nào trong danh mục này.</p>
+        <% } %>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>Không có kết quả tìm kiếm nào.</p>
+  <% } %>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const orderButtons = document.querySelectorAll('.order-btn');
+  
+      orderButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const productId = this.dataset.productId;
+          if (!productId) {
+            console.error('Product ID is missing');
+            return;
+          }
+          const orderPageUrl = `/order?productId=${productId}`;
+          console.log('Redirecting to:', orderPageUrl);
+          window.location.href = orderPageUrl;
+        });
+      });
+    });
+  </script>
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<header>
+    <div class="header-left">
+        <img src="/img/logo.png" alt="Sweet Milk Tea" />
+    </div>
+    <div class="header-right">
+        <div class="header-top">
+            <% if (user) { %>
+                <span>Xin chào, <%= user.name %></span>
+                <button onclick="location.href='/api/users/logout'">ĐĂNG XUẤT</button>
+            <% } else { %>
+                <button onclick="showLoginForm()">ĐĂNG NHẬP</button>
+            <% } %>
+            <button onclick="location.href='/cart'" class="cart">
+                <span>GIỎ HÀNG</span><img src="/img/cart.png" alt="Cart" />
+            </button>
+        </div>
+        <div class="header-bottom">
+            <div class="search-container">
+                <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                <button id="search-button">
+                    <div id="icon"></div>
+                </button>
+            </div>
+            <div class="nav-menu">
+                <a href="/">Trang chủ</a>
+                <a href="/menu">Thực đơn</a>
+                <a href="/promotions">Khuyến mãi</a>
+                <a href="/about">Về chúng tôi</a>
+                <a href="/contact">Liên hệ</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="loginContainer" style="display: none; justify-content: center; align-items: center; height: 100vh;"></div>
+<script src="/scripts.js"></script>

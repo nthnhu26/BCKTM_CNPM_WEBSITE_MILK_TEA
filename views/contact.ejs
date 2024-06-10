@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+  <div class="banner">
+    <div class="drip"></div>
+    <div class="content">
+      <div class="column">
+        <img src="/img/teacup.png" alt="Sweet Milk Tea Cup" class="left-cup">
+      </div>
+      <div class="column">
+        <div class="text">
+          <hr>
+          <h1>LIÊN HỆ</h1>
+          <hr>
+          <p>SWEET MILK TEA</p>
+        </div>
+      </div>
+      <div class="column">
+        <img src="/img/teacup.png" alt="Sweet Milk Tea Cup" class="right-cup">
+      </div>
+    </div>
+  </div>
+  <div class="contact-container">
+    <div class="content-wrapper">
+      <p>Sweet milk tea rất mong muốn nhận được những phản hồi hay gợi ý của các bạn về chất lượng sản phẩm và dịch vụ của chúng tôi. Hãy gửi thông tin của các bạn đến cho chúng tôi tại khung bên dưới nhé!</p>
+      <form id="contact-form" action="/api/contact" method="post">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Họ và Tên" value="<%= user.name %>" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Email" value="<%= user.email %>" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" name="phone" placeholder="Số điện thoại" value="<%= user.phone %>" required>
+        </div>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="complaint" name="category" value="complaint" checked>
+            <label for="complaint">Than phiền</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="praise" name="category" value="praise">
+            <label for="praise">Khen ngợi</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="suggestion" name="category" value="suggestion">
+            <label for="suggestion">Đề xuất</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="other" name="category" value="other">
+            <label for="other">Vấn đề khác</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="Nội dung phản hồi" required></textarea>
+        </div>
+        <h4>THỎA THUẬN BẢO MẬT THÔNG TIN</h4>
+        <p>1. SWEET MILK TEA sẽ luôn giữ bí mật thông tin của khách hàng và tuân thủ những quy định của pháp luật về bảo mật thông tin có liên quan.</p>
+        <p>2. SWEET MILK TEA có thể sử dụng thông tin cá nhân cho mục đích giải quyết, khiếu nại, than phiền của khách hàng.</p>
+        <h4>LƯU Ý:</h4>
+        <p>Quý khách vui lòng cung cấp chính xác các thông tin cá nhân để SWEET MILK TEA có thể liên hệ giải quyết các thắc mắc, phản hồi và khiếu nại của khách hàng một cách nhanh chóng nhất.</p>
+        <p>Các ngày Thứ bảy, Chủ nhật, ngày lễ sẽ khiến quá trình giải quyết phản hồi chậm hơn thường lệ.</p>
+        <div class="form-group">
+          <input type="checkbox" id="agreement" name="agreement" required>
+          <label for="agreement">Tôi xác nhận các thông tin cá nhân cung cấp ở trên là hoàn toàn chính xác và đồng ý để Sweet Milk Tea sử dụng các thông tin đó cho mục đích giải quyết phản hồi.</label>
+        </div>
+        <button type="submit" class="submit-button">Gửi Ý Kiến</button>
+      </form>
+    </div>
+  </div>
+  <%- include('partials/footer') %>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (!document.getElementById('agreement').checked) {
+        alert('Bạn phải xác nhận thông tin trước khi gửi.');
+        return;
+      }
+
+      const formData = new FormData(this);
+      const jsonData = {};
+      formData.forEach((value, key) => {
+        jsonData[key] = value;
+      });
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        window.location.reload();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Có lỗi xảy ra khi gửi phản hồi');
+      });
+    });
+  </script>
+</body>
+</html>

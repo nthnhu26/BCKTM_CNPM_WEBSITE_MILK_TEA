@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đơn hàng</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>SWEET MILK TEA</h1>
+            <nav>
+                <a href="#">ĐĂNG XUẤT</a>
+            </nav>
+        </header>
+        <aside class="admin-sidebar">
+            <ul>
+                <li><a href="#" onclick="fetchCategories()">DANH MỤC</a></li>
+                <li><a href="#" onclick="fetchProducts()">SẢN PHẨM</a></li>
+                <li><a href="#" onclick="fetchUsers()">NGƯỜI DÙNG</a></li>
+                <li><a href="#" onclick="fetchOrders()">ĐƠN HÀNG</a></li>
+                <li><a href="#" onclick="fetchContacts()">LIÊN HỆ</a></li>
+                <li><a href="#" onclick="fetchMonthlyIncome()">DOANH THU</a></li>
+            </ul>
+        </aside>
+        <main class="admin-main">
+            <h2 id="main-title">Danh sách</h2>
+            <table class="admin-table" id="data-table">
+                <!-- Dữ liệu sẽ được thêm vào đây -->
+            </table>            
+        </main>
+    </div>
+
+    <script>
+        async function fetchCategories() {
+            try {
+                const response = await fetch('/admin/categories');
+                const categories = await response.json();
+                renderTable(categories, 'DANH MỤC');
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách danh mục', error);
+            }
+        }
+
+        async function fetchProducts() {
+            try {
+                const response = await fetch('/admin/products');
+                const products = await response.json();
+                renderTable(products, 'SẢN PHẨM');
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách sản phẩm', error);
+            }
+        }
+
+        async function fetchUsers() {
+            try {
+                const response = await fetch('/admin/users');
+                const users = await response.json();
+                renderTable(users, 'NGƯỜI DÙNG');
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách người dùng', error);
+            }
+        }
+
+        async function fetchOrders() {
+            try {
+                const response = await fetch('/admin/orders');
+                const orders = await response.json();
+                renderTable(orders, 'ĐƠN HÀNG');
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách đơn hàng', error);
+            }
+        }
+
+        async function fetchContacts() {
+            try {
+                const response = await fetch('/admin/contacts');
+                const contacts = await response.json();
+                renderTable(contacts, 'LIÊN HỆ');
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách liên hệ', error);
+            }
+        }
+
+        async function fetchMonthlyIncome() {
+            try {
+                const response = await fetch('/admin/monthly-income');
+                const income = await response.json();
+                renderTable([income], 'DOANH THU');
+            } catch (error) {
+                console.error('Lỗi khi tính doanh thu', error);
+            }
+        }
+
+        function renderTable(data, title) {
+            const table = document.getElementById('data-table');
+            const mainTitle = document.getElementById('main-title');
+            mainTitle.innerText = title;
+
+            // Clear existing table data
+            table.innerHTML = '';
+
+            if (data.length === 0) {
+                table.innerHTML = '<tr><td colspan="100%">Không có dữ liệu</td></tr>';
+                return;
+            }
+
+            // Create table headers
+            const headers = Object.keys(data[0]);
+            const headerRow = document.createElement('tr');
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.innerText = header;
+                headerRow.appendChild(th);
+            });
+            table.appendChild(headerRow);
+
+            // Create table rows
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                headers.forEach(header => {
+                    const td = document.createElement('td');
+                    td.innerText = item[header];
+                    row.appendChild(td);
+                });
+                table.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>

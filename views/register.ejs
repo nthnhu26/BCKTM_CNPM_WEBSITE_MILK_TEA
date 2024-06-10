@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="login-form">
+            <div class="login-container">
+                <div class="login-left-panel">
+                    <img src="/img/logo.png" alt="Logo">
+                </div>
+                <div class="login-right-panel">
+                    <span class="login-close-btn" onclick="window.location.href='/'">×</span>
+                    <div class="login-inner-right-panel">
+                        <form action="/api/users/register" method="post">
+                            <h2>ĐĂNG KÝ</h2>
+                            <label for="ho_ten">Họ và tên:</label>
+                            <input type="text" id="ho_ten" name="ho_ten" required>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="sdt">Số điện thoại:</label>
+                            <input type="text" id="sdt" name="sdt" required>
+                            <label for="diachi">Địa chỉ:</label>
+                            <textarea id="diachi" name="diachi"></textarea>
+                            <label for="matkhau">Mật khẩu:</label>
+                            <input type="password" id="matkhau" name="matkhau" required>
+                            <button type="submit">Đăng ký</button>
+                        </form>
+                        <div class="login-other-login">
+                            <div class="social-signup">
+                                <button class="login-google"><img src="/img/google.png" alt="Google">Google</button>
+                                <button class="login-facebook"><img src="/img/facebook.png"
+                                        alt="Facebook">Facebook</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

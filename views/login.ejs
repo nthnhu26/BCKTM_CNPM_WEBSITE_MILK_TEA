@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="login-form">
+            <div class="login-container">
+                <div class="login-left-panel">
+                    <img src="/img/logo.png" alt="Logo">
+                </div>
+                <div class="login-right-panel">
+                    <span class="login-close-btn" onclick="window.location.href='/'">×</span>
+                    <div class="login-inner-right-panel">
+                        <form action="/api/users/login" method="post">
+                            <h2>ĐĂNG NHẬP</h2>
+                            <label for="username">Tên đăng nhập:</label>
+                            <input type="text" id="username" name="username" required>
+                            <label for="password">Mật khẩu:</label>
+                            <input type="password" id="password" name="password" required>
+                            <button type="submit">Đăng Nhập</button>
+                        </form>
+                        <div class="login-other-login">
+                            <a href="/forgot-password">Quên mật khẩu</a> <span class="login-separator"></span> <a href="/register" onclick="showRegisterForm()">Đăng ký</a>
+                            <p>Hoặc</p>
+                            <div class="login-social-login">
+                                <button class="login-google"><img src="/img/google.png" alt="Google">Đăng nhập với
+                                    Google</button>
+                                <button class="login-facebook"><img src="/img/facebook.png" alt="Facebook">Đăng nhập với
+                                    Facebook</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loginContainer" style="display: none; justify-content: center; align-items: center; height: 100vh;"></div>
+</body>
+
+</html>

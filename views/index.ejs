@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <%- include('partials/header') %> 
+    <div class="banner-index"></div>
+    <main>
+        <section class="gioi-thieu">
+            <div class="gioi-thieu-content">               
+                <h2>Giới thiệu về Sweet Milk Tea</h2>
+                <p>Chúng tôi là một quán trà sữa độc lập nằm tại trung tâm thành phố Trà Vinh, nơi bạn có thể thư giãn và thưởng thức những hương vị độc đáo và ngon miệng. Tại Sweet Milk Tea, chúng tôi cam kết mang đến cho bạn những trải nghiệm đáng nhớ qua các đồ uống sáng tạo và dịch vụ thân thiện.</p>
+                <a href="/about" class="btn-xem-them">Xem thêm</a>
+            </div>
+            <div class="gioi-thieu-image">              
+                <img src="/img/gioithieu.png" alt="Hình ảnh giới thiệu">
+            </div>
+        </section>
+
+        <section class="uu-diem">
+            <div class="uu-diem-item">
+                <div class="image-container">
+                    <img src="/img/icon1.png" alt="Chất lượng hàng đầu">
+                </div>              
+                <h3>Chất lượng hàng đầu</h3>
+                <p>An toàn vệ sinh và ngon miệng là ưu tiên hàng đầu của Sweet Milk Tea. Việc sử dụng các nguyên liệu an toàn, tự nhiên và vệ sinh là mục tiêu quan trọng mà chúng tôi muốn hướng đến.</p>
+            </div>
+            <div class="uu-diem-item">
+                <div class="image-container">
+                    <img src="/img/icon2.png" alt="Dịch vụ thân thiện">
+                </div>
+                
+                <h3>Dịch vụ thân thiện</h3>
+                <p>Sweet Milk Tea mong muốn làm hài lòng khách hàng tốt nhất với tác phong phục vụ chuyên nghiệp và thân thiện, luôn lắng nghe những đóng góp của khách hàng.</p>
+            </div>
+            <div class="uu-diem-item">
+                <div class="image-container">
+                    <img src="/img/icon3.png" alt="Thương hiệu đáng tin cậy">
+                </div>
+                
+                <h3>Thương hiệu đáng tin cậy</h3>
+                <p>Dựa trên hai nền tảng cốt lõi là Chất Lượng và Dịch Vụ, Sweet Milk Tea luôn nỗ lực xây dựng và duy trì hình ảnh thương hiệu đáng tin cậy trong mắt khách hàng.</p>
+            </div>
+        </section>
+        
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
